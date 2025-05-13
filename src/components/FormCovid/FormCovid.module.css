@@ -1,0 +1,102 @@
+.formSection {
+  padding: 82px 122px;
+  display: flex;
+  align-items: center;
+  gap: 130px;
+}
+
+/* Tambahkan ini untuk memastikan gambar dan form diatur vertikal pada layar kecil */
+@media (max-width: 767px) {
+  .formSection {
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .formSection h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  button {
+    font-size: 1.1rem;
+  }
+}
+
+.formSection h2 {
+  font-size: 61px;
+  font-weight: 500;
+  color: #06d6a0;
+  margin: 0;
+}
+
+.formGroup {
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 9px;
+  font-weight: 400;
+  font-size: 24px;
+  color: #64748b;
+}
+
+.formGroup input {
+  width: 100%;
+  border: 2px solid #06d6a0;
+  border-radius: 10px;
+  height: 43px;
+  padding: 10px;
+}
+
+.formGroup input:focus-visible {
+  outline-color: #06d6a0;
+}
+
+button {
+  background-color: #06d6a0;
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 12px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Responsive Design for tablet and above */
+@media (min-width: 768px) {
+  .formSection {
+    flex-direction: row;
+    justify-content: center;
+    padding: 4rem 6rem;
+  }
+
+  .image {
+    width: 350px;
+  }
+}
+
+@media (min-width: 992px) {
+  .sectionTitle {
+    font-size: 3rem;
+  }
+
+  .formGroup input {
+    font-size: 1.1rem;
+  }
+
+  button {
+    font-size: 1.25rem;
+  }
+}

@@ -1,0 +1,26 @@
+.numberCard {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 60px;
+  margin: 10px;
+  flex: 1 1 200px;
+  min-width: 200px;
+}
+
+.numberCard:hover {
+  transform: translateY(-5px);
+}
+
+.numberTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #073b4c;
+  margin-bottom: 16px;
+}
+
+.numberValue {
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;
+}
