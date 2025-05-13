@@ -8,11 +8,12 @@ function Hero() {
           <h1 className={styles.hero__title}>Covid ID</h1>
           <h2 className={styles.hero__genre}>Monitoring Perkembangan Covid</h2>
           <p className={styles.hero__description}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since.
+            Covid ID  
+Pantau Perkembangan Covid-19 Secara Real-Time  
+Covid ID adalah aplikasi untuk memantau data dan perkembangan kasus Covid-19 secara global, nasional, dan per provinsi. Dapatkan informasi akurat dan terkini dari sumber terpercaya.
+
           </p>
-          <button className={styles.hero__button}>Vaccine</button>
+          <button className={styles.hero__button}>Info Vaksin</button>
         </div>
 
         <div className={styles.hero__right}>
