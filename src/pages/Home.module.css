@@ -32,19 +32,17 @@
 
 @media (max-width: 1024px) {
   .numberCard {
-    flex: 0 0 45%; /* Tablet: 2 per row */
+    flex: 0 0 45%;
     max-width: 45%;
   }
 }
 
 @media (max-width: 600px) {
   .numberCard {
-    flex: 0 0 90%; /* HP: 1 per row */
+    flex: 0 0 90%;
     max-width: 90%;
   }
 }
-
-/* Table */
 
 .tableSection {
   padding: 76px 122px 135px;

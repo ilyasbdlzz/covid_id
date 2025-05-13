@@ -64,7 +64,6 @@
   height: auto;
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
   .container {
     padding: 40px 20px;
@@ -95,7 +94,7 @@
   .hero__button {
     font-size: 20px;
     padding: 12px 32px;
-    margin: 24px auto 0; /* Center the button */
+    margin: 24px auto 0;
   }
   .hero__image {
     max-width: 80%;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./FormCovid.module.css";
-import { nanoid } from "nanoid";
 import Alert from "./Alert";
+import { provinceData } from "../utils/constants/province";
 
 function FormCovid({ data, setData }) {
   const [province, setProvince] = useState("");
@@ -22,14 +22,17 @@ function FormCovid({ data, setData }) {
     } else if (jumlah === "") {
       setIsJumlahError(true);
     } else {
-      const newData = {
-        id: nanoid(),
-        province,
-        status,
-        jumlah,
-      };
+      const updatedData = data.map((item) => {
+        if (item.province === province) {
+          return {
+            ...item,
+            [status]: item[status] + parseInt(jumlah),
+          };
+        }
+        return item;
+      });
 
-      setData([...data, newData]);
+      setData(updatedData);
       setProvince("");
       setStatus("");
       setJumlah("");
@@ -41,40 +44,47 @@ function FormCovid({ data, setData }) {
 
   return (
     <section className={styles.formSection}>
-      <img
-        src="./images/form.svg"
-        alt="Form Covid"
-        className={styles.image}
-      />
+      <img src="./images/form.svg" alt="Form Covid" className={styles.image} />
       <form onSubmit={handleSubmit}>
         <h2 className={styles.sectionTitle}>Form Covid</h2>
 
         <div className={styles.formGroup}>
           <label htmlFor="province">Provinsi</label>
-          <input
-            type="text"
+          <select
             id="province"
             value={province}
             onChange={(e) => setProvince(e.target.value)}
-          />
-          {isProvinceError && <Alert>Provinsi wajib diisi</Alert>}
+          >
+            <option value="">-- Pilih Provinsi --</option>
+            {provinceData.rows.map((prov) => (
+              <option key={prov.index} value={prov.province}>
+                {prov.province}
+              </option>
+            ))}
+          </select>
+          {isProvinceError && <Alert>Provinsi wajib dipilih</Alert>}
         </div>
 
         <div className={styles.formGroup}>
           <label htmlFor="status">Status</label>
-          <input
-            type="text"
+          <select
             id="status"
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-          />
-          {isStatusError && <Alert>Status wajib diisi</Alert>}
+          >
+            <option value="">-- Pilih Status --</option>
+            <option value="positive">Positif</option>
+            <option value="healed">Sembuh</option>
+            <option value="treated">Dirawat</option>
+            <option value="died">Meninggal</option>
+          </select>
+          {isStatusError && <Alert>Status wajib dipilih</Alert>}
         </div>
 
         <div className={styles.formGroup}>
           <label htmlFor="jumlah">Jumlah</label>
           <input
-            type="text"
+            type="number"
             id="jumlah"
             value={jumlah}
             onChange={(e) => setJumlah(e.target.value)}
