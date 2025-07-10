@@ -1,4 +1,3 @@
-
 export const provinceData = {
   rows: [
     { index: 1, province: "Jakarta", positive: 0, healed: 0, treated: 0, died: 0 },

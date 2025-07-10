@@ -1,30 +1,80 @@
-import styles from "./Hero.module.css";
+import styled from "styled-components";
+import HeroImage from "../../assets/hero-illustration.svg"; // ganti jika perlu
 
-function Hero() {
+const HeroWrapper = styled.section`
+  padding: 60px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+`;
+
+const HeroText = styled.div`
+  max-width: 500px;
+`;
+
+const Title = styled.h1`
+  font-size: 3rem;
+  color: #06d6a0;
+  font-family: 'Poppins', sans-serif;
+`;
+
+const Subtitle = styled.h2`
+  font-size: 1.5rem;
+  margin: 10px 0;
+  color: #073b4c;
+`;
+
+const Description = styled.p`
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 20px;
+`;
+
+const ButtonLink = styled.a`
+  display: inline-block;
+  background-color: #06d6a0;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #04b58a;
+  }
+`;
+
+const Illustration = styled.img`
+  width: 300px;
+  max-width: 100%;
+  margin-top: 20px;
+`;
+
+function Hero({
+  title = "Covid ID",
+  subtitle = "Monitoring Perkembangan Covid",
+  description = "Lorem ipsum is simply dummy text of the printing and typesetting industry.",
+  showButton = false,
+  buttonText = "Vaccine",
+  buttonLink = "https://vaksin.kemkes.go.id",
+}) {
   return (
-    <div className={styles.container}>
-      <section className={styles.hero}>
-        <div className={styles.hero__left}>
-          <h1 className={styles.hero__title}>Covid ID</h1>
-          <h2 className={styles.hero__genre}>Monitoring Perkembangan Covid</h2>
-          <p className={styles.hero__description}>
-            Covid ID  
-Pantau Perkembangan Covid-19 Secara Real-Time  
-Covid ID adalah aplikasi untuk memantau data dan perkembangan kasus Covid-19 secara global, nasional, dan per provinsi. Dapatkan informasi akurat dan terkini dari sumber terpercaya.
-
-          </p>
-          <button className={styles.hero__button}>Info Vaksin</button>
-        </div>
-
-        <div className={styles.hero__right}>
-          <img
-            className={styles.hero__image}
-            src="./images/hero.svg"
-            alt="Hero"
-          />
-        </div>
-      </section>
-    </div>
+    <HeroWrapper>
+      <HeroText>
+        <Title>{title}</Title>
+        <Subtitle>{subtitle}</Subtitle>
+        <Description>{description}</Description>
+        {showButton && (
+          <ButtonLink href={buttonLink} target="_blank" rel="noopener noreferrer">
+            {buttonText}
+          </ButtonLink>
+        )}
+      </HeroText>
+      <Illustration src={HeroImage} alt="Hero illustration" />
+    </HeroWrapper>
   );
 }
 

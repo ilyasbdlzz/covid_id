@@ -1,36 +1,64 @@
-import styles from "./CovidTable.module.css";
+import styled from "styled-components";
+import { useCovid } from "../../context/CovidContext";
 
-const CovidTable = ({ data }) => {
+const TableWrapper = styled.div`
+  width: 100%;
+  overflow-x: auto;
+  padding: 0 1rem;
+`;
+
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+  min-width: 600px;
+`;
+
+const Th = styled.th`
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #06d6a0;
+  color: white;
+  font-weight: bold;
+`;
+
+const Td = styled.td`
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+`;
+
+function CovidTable() {
+  const { data } = useCovid();
+
   return (
-    <div className={styles.wrapperTabel}>
-      <table className={styles.tabelData}>
+    <TableWrapper>
+      <Table>
         <thead>
           <tr>
-            <th>No</th>
-            <th>Provinsi</th>
-            <th>Positif</th>
-            <th>Sembuh</th>
-            <th>Dirawat</th>
-            <th>Meninggal</th>
+            <Th>No</Th>
+            <Th>Provinsi</Th>
+            <Th>Positif</Th>
+            <Th>Sembuh</Th>
+            <Th>Dirawat</Th>
+            <Th>Meninggal</Th>
           </tr>
         </thead>
         <tbody>
-          {data.map(({ index, province, positive, healed, treated, died }) => {
-            return (
-              <tr key={index}>
-                <td>{index}</td>
-                <td>{province}</td>
-                <td>{positive}</td>
-                <td>{healed}</td>
-                <td>{treated}</td>
-                <td>{died}</td>
-              </tr>
-            );
-          })}
+          {data.map((item) => (
+            <tr key={item.index}>
+              <Td>{item.index}</Td>
+              <Td>{item.province}</Td>
+              <Td>{item.positive}</Td>
+              <Td>{item.healed}</Td>
+              <Td>{item.treated}</Td>
+              <Td>{item.died}</Td>
+            </tr>
+          ))}
         </tbody>
-      </table>
-    </div>
+      </Table>
+    </TableWrapper>
   );
-};
+}
 
 export default CovidTable;
